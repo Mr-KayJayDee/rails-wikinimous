@@ -1,0 +1,23 @@
+<div style="display: flex; justify-content: center;">
+    <div style="width: 50%;">
+        <h2>Articles</h2>
+
+        <ul class="list-group">
+            <% @articles.each do |article| %>
+                <li class="list-group-item">
+                    <%= link_to article_path(article) do %>
+                        <strong><%= article.title %></strong>
+                    <% end %>
+                    <%= link_to "<i class='fas fa-trash'></i>".html_safe,
+                        article_path(article),
+                        method: :delete,
+                        data: { confirm: "Are you sure?" },
+                        class: "btn btn-danger btn-sm float-right"
+                    %>
+                </li>
+            <% end %>
+        </ul>
+
+        <%= link_to "<i class='fas fa-plus'></i> New Article".html_safe, new_article_path, class: "btn btn-primary" %>
+    </div>
+</div>
